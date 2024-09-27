@@ -13,11 +13,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build docker image vote
-        run: docker build -t kowynx/vote:latest ./vote
+        run: docker build -t kowynx/vote:latest ./github-actions/Tp/vote
       - name: Build docker image result
-        run: docker build -t kowynx/result:latest ./result
+        run: docker build -t kowynx/result:latest ./github-actions/Tp/result
       - name: Build docker image worker
-        run: docker build -t kowynx/worker:latest ./worker
+        run: docker build -t kowynx/worker:latest ./github-actions/Tp/worker
 
       - name: push docker image vote
         run: docker push kowynx/vote:latest
