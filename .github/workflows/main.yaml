@@ -9,23 +9,8 @@ on:
       - main
 
 jobs:
-  build:
+  docker:
     runs-on: ubuntu-latest
-
-    services:
-      redis:
-        image: redis:5.0-alpine3.10
-        ports:
-          - 6379:6379
-
-      postgres:
-        image: postgres:9.4
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: user
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: vote
 
     steps:
       - name: Checkout code
@@ -55,7 +40,6 @@ jobs:
           file: ./result/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/node-app:latest
-
 
       - name: Build and push Worker app
         uses: docker/build-push-action@v2
